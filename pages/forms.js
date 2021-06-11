@@ -1,10 +1,6 @@
 import React from 'react'
 import formStyles from '../styles/Forms.module.css'
 
-/**
-* @author
-* @function forms
-**/
 
 const forms = (props) => {
     const addQuestion = async event => {

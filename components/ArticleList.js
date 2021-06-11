@@ -1,9 +1,6 @@
-import articleStyles from '../styles/Articles.module.css'
+import articleStyles from '../styles/Articles.module.css';
 
-/**
-* @author
-* @function ArticleList
-**/
+
 
 const ArticleList = ({articles}) => {
   return(
@@ -14,6 +11,6 @@ const ArticleList = ({articles}) => {
     </div>
    )
 
- }
+}
 
 export default ArticleList
