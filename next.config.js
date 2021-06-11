@@ -1,3 +1,3 @@
 module.exports = {
-    assetPrefix = '/next-quiz/',
+    assetPrefix: '/next-quiz/',
 }
