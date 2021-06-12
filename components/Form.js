@@ -1,4 +1,4 @@
-import React from 'react'
+import formStyles from '../styles/Forms.module.css'
 
 /**
 * @author
@@ -9,7 +9,7 @@ const Form = ({addQuestion}) => {
 
     const elements = ['question', 'correctAnswer', 'falseAnswer', 'secondFalseAnswer', 'thirdFalseAnswer']
   return(
-    <div>
+    <div className={formStyles.form}>
         <form onSubmit={addQuestion}>
             {elements.map((element, i) => {
                 const input = `input${i}`
