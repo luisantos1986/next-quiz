@@ -14,6 +14,9 @@ const Nav = (props) => {
         <li>
             <Link href='/forms'>Forms</Link>
         </li>
+        <li>
+            <Link href='/jsonQuestions'>JsonQuestions</Link>
+        </li>
        </ul> 
     </div>
     )

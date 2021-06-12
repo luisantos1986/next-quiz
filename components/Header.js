@@ -6,12 +6,14 @@ import headerStyles from '../styles/Header.module.css'
 **/
 
 const Header = (props) => {
+    console.log("from header")
+    console.log(props)
   return(
     <div>
         <h1 className={headerStyles.title}>
-            <span>WebDev</span> News
+            <span>React-Native</span> Quiz
         </h1>
-        <p className={headerStyles.description}>Keep up with the latest web dev news</p>
+        <p className={headerStyles.description}></p>
     </div>
    )
 

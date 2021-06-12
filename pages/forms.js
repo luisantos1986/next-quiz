@@ -1,33 +1,62 @@
-import React from 'react'
+import {useState} from 'react'
 import formStyles from '../styles/Forms.module.css'
+import Form from '../components/Form'
+import Modal from '../components/Modal'
+import { connect } from 'react-redux'
 
 
-const forms = (props) => {
-    const addQuestion = async event => {
-        event.preventDefault()
-        let question = event.target.question.value
-        console.log(question)
+const mapStateToProps = state => state
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addQuestion: (question) => dispatch({type: 'ADDQUESTION',
+    question: question})
+    }
+}
+
+const forms = ({questions, addQuestion}) => {
+
+    const [display, setDisplay] = useState(false)
+
+    const onModalResponse = (response) => {
+        setDisplay(response)
     }
 
-    const elements = ['question', 'correctAnswer', 'falseAnswer', 'secondFalseAnswer', 'thirdFalseAnswer']
+    console.log("from forms")
+    console.log(questions)
+
+    const addNewQuestion = async event => {
+        event.preventDefault()
+        let question = {question: event.target.question.value,
+            answers:[{
+                type:"true",
+                content: event.target.correctAnswer.value
+            },{
+                type:"false",
+                content: event.target.falseAnswer.value
+            },{
+                type:"false",
+                content: event.target.secondFalseAnswer.value
+            }]
+        }
+        console.log(question)
+        addQuestion(question)
+        console.log(questions)
+        setDisplay(true)
+    }
+
+
   return(
     <div className={formStyles.form}>
-        <form onSubmit={addQuestion}>
-            {elements.map((element, i) => {
-                console.log(`element = ${element} i = ${i}`)
-                const input = `input${i}`
-                return (
-                    <div key={i.toString()}>
-                    <label for={element}>{element}</label>
-                    <input id={element} type="text" autoComplete={element} required />
-                    </div>
-                )
-            })}
-            <button type="submit">Add</button>
-        </form> 
+        <Modal 
+            displayed={display}
+            onModalResponse={onModalResponse}
+        />
+        <Form
+            addQuestion={addNewQuestion} 
+        />
     </div>
    )
 
  }
 
-export default forms
+export default connect(mapStateToProps,mapDispatchToProps)(forms)
