@@ -12,7 +12,7 @@ const about = (props) => {
         <title>About</title>
         <meta name='keywords' content='web development'/>
     </Head>
-        <h1>about</h1>
+        <h1>Created by Luis Eugenio Santos Gonzalez</h1>
     </div>
    )
 
