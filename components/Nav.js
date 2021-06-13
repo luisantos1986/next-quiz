@@ -17,6 +17,9 @@ const Nav = (props) => {
         <li>
             <Link href='/jsonQuestions'>JsonQuestions</Link>
         </li>
+        <li>
+            <Link href='/quiz'>Quiz</Link>
+        </li>
        </ul> 
     </div>
     )
