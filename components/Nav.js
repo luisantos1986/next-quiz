@@ -5,8 +5,8 @@ const Nav = (props) => {
     return ( 
     <div className={navStyles.nav}>
        <ul>
-        <li>
-            <Link href='/'>Home</Link>
+       <li>
+            <Link href='/quiz'>Quiz</Link>
         </li>
         <li>
             <Link href='/about'>About</Link>
@@ -16,9 +16,6 @@ const Nav = (props) => {
         </li>
         <li>
             <Link href='/jsonQuestions'>JsonQuestions</Link>
-        </li>
-        <li>
-            <Link href='/quiz'>Quiz</Link>
         </li>
        </ul> 
     </div>

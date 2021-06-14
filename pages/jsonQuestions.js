@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import jsonQuestionsStyles from '../styles/JsonQuestions.module.css'
+import Password from '../components/Password'
 
 const useQuestions = () => {
     return useSelector(
@@ -10,15 +12,30 @@ const useQuestions = () => {
 }
 
 const jsonQuestions = (props) => {
-    console.log("from props")
 
-    console.log(props)
+    const myUser = 'root'
+    const myPassword = 'ReactNativeJSONQuestions'
+
+    const [viewJson, setViewJson] = useState(false);
+
+    const checkUser = (event) => {
+        event.preventDefault()
+        // console.log(event.target.text.value)
+        // console.log(event.target.password === myUser)
+        // console.log(event.target.password)
+        
+        setViewJson(event.target.text.value === myUser && event.target.password.value === myPassword)
+    }
+    
     const { myQuestions }  = useQuestions()
-  return(
-    <div className={jsonQuestionsStyles.jsonQuestions}>
-        <pre>{JSON.stringify(myQuestions, null, 2) }</pre>
-    </div>
-   )
+    return viewJson ? (
+        <div className={jsonQuestionsStyles.jsonQuestions}>
+            <pre>{JSON.stringify(myQuestions, null, 2) }</pre>
+        </div>
+        ) : <Password 
+            checkUser = {checkUser}
+            />
+
   }
 
 

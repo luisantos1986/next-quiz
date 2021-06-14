@@ -23,26 +23,17 @@ const quiz = (props) => {
 
     useEffect(() => {
         let newQuestions = shuffleArray(quizQuestions)
-        // console.log("newQuestions")
-        // console.log(newQuestions)
         setQuestions(newQuestions)
     },[])
 
     useEffect(() => {
-        // console.log("questions called")
         if (!_.isEmpty(questions)){
-            // console.log("questions Changed")
-            // console.log(questions)
             setQuestion(questions[0])   
-        }else {
-            // console.log("questions empty")
-        }   
+        } 
     },[questions]) 
 
     useEffect(() => {
         if (!_.isEmpty(question)){
-            // console.log("questionChanged")
-            // console.log(question)
             const shuffledAnswerOptions = shuffleArray(question.answers)
             setAnswerOptions(shuffledAnswerOptions)
         }
@@ -54,40 +45,40 @@ const quiz = (props) => {
         setFinish(!_.isEmpty(result))
     },[result])
 
+    useEffect(() => {
+        if (!_.isEmpty(answerCount)) {
+            if (questionId < quizQuestions.length) {
+                setTimeout(() => setNextQuestion(), 300)
+            } else {
+                console.log("else with answercount")
+                console.log(answerCount)
+                setTimeout(() => setResult(answerCount), 300)
+            }
+        }
+    },[answerCount])
+
     const shuffleArray = (array) => {
-        // console.log('arrayIn')
-        // console.log(array)
         let shuffled = array
             .map((a) => ({sort: Math.random(), value: a}))
             .sort((a, b) => a.sort - b.sort)
             .map((a) => a.value)
 
-        // console.log('arrayOut')
-        // console.log(shuffled)
         return shuffled
     }
 
     const handleAnswerSelected = (event) =>  {
-        // console.log("handle answer selected")
-        // console.log(event.currentTarget.value)
+        console.log("handle AnswerSelected")
+        console.log(event.currentTarget.value)
         setUserAnswer(event.currentTarget.value)
-        // console.log(`QuestionID ${questionId}`)
-        // console.log(`quisQuestions ${quizQuestions.length}`)
 
-        if (questionId < quizQuestions.length) {
-            setTimeout(() => setNextQuestion(), 300)
-        } else {
-            console.log("else with answercount")
-            console.log(answerCount)
-            setTimeout(() => setResult(answerCount), 300)
-        }
     }
 
     const setUserAnswer = (answer) => {
-        let newAnswerCount = answerCount + 1
-        let myAnswer = (answerCount[answer] || 0) + 1
+        let newAnswerCount = {
+            ...answerCount,
+            [answer]: (answerCount[answer] || 0) + 1
+        }
         setAnswerCount(newAnswerCount)
-        setAnswer(myAnswer)
     }
 
     const setNextQuestion = () => {
