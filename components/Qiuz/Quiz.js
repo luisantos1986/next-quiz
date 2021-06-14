@@ -3,7 +3,7 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import Question from './Question';
 import QuestionCount from './QustionCount';
 import AnswerOption from './AnswerOption';
-import quizStyles from '../../styles/Quiz.module.css'
+import quizStyles from '../../styles/MyQuiz.module.css'
 
 function Quiz(props) {
   function renderAnswerOptions(key) {

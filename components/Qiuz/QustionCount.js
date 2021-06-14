@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import quizStyles from '../../styles/Quiz.module.css'
+import quizStyles from '../../styles/MyQuiz.module.css'
 
 function QuestionCount(props) {
   return (
